@@ -1,0 +1,11 @@
+[ignore]
+.*/styled-components/src/.*
+
+[libs]
+flow-typed
+
+[options]
+module.name_mapper.extension='scss' -> 'empty/object'
+
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe

@@ -8,7 +8,8 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
-
+var FlowTypecheckPlugin = require('./plugins/FlowTypecheckPlugin');
+var WatchTestFilesPlugin = require('./plugins/WatchTestFilesPlugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -205,7 +206,21 @@ module.exports = {
         // to restart the development server for Webpack to discover it. This plugin
         // makes the discovery automatic so you don't have to restart.
         // See https://github.com/facebookincubator/create-react-app/issues/186
-        new WatchMissingNodeModulesPlugin(paths.appNodeModules)
+        new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+        // Trigger some typechecking if a file matches with an @ flow comment
+        new FlowTypecheckPlugin({
+            otherFlowTypedDefs: {
+                jest: "18.1.0"
+            }
+        }),
+        // Tests won't have any linting unless they go through webpack.
+        // This plugin makes webpack aware of them without emitting them.
+        // See https://github.com/facebookincubator/create-react-app/issues/1169
+        new WatchTestFilesPlugin([
+            'src/**/__tests__/**/*',
+            'src/**/*.test.*',
+            '__tests__/**/*',
+        ])
     ],
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.

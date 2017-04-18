@@ -1,7 +1,9 @@
+// @flow
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.scss";
-import DataMap from "components/DataMap/index";
+
+import DataMap from "../components/DataMap/index";
 
 class App extends Component {
 
