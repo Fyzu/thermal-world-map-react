@@ -1,0 +1,594 @@
+[
+  {
+    "count_dtime": 1051,
+    "country": "US"
+  },
+  {
+    "count_dtime": 813,
+    "country": "DE"
+  },
+  {
+    "count_dtime": 748,
+    "country": "FR"
+  },
+  {
+    "count_dtime": 729,
+    "country": "IT"
+  },
+  {
+    "count_dtime": 637,
+    "country": "PL"
+  },
+  {
+    "count_dtime": 476,
+    "country": "GB"
+  },
+  {
+    "count_dtime": 349,
+    "country": "RU"
+  },
+  {
+    "count_dtime": 285,
+    "country": "ES"
+  },
+  {
+    "count_dtime": 264,
+    "country": "HU"
+  },
+  {
+    "count_dtime": 239,
+    "country": "GR"
+  },
+  {
+    "count_dtime": 233,
+    "country": "CZ"
+  },
+  {
+    "count_dtime": 195,
+    "country": "CA"
+  },
+  {
+    "count_dtime": 194,
+    "country": "BG"
+  },
+  {
+    "count_dtime": 193,
+    "country": "BR"
+  },
+  {
+    "count_dtime": 181,
+    "country": "RO"
+  },
+  {
+    "count_dtime": 155,
+    "country": "SE"
+  },
+  {
+    "count_dtime": 142,
+    "country": "UA"
+  },
+  {
+    "count_dtime": 135,
+    "country": "TR"
+  },
+  {
+    "count_dtime": 133,
+    "country": "AR"
+  },
+  {
+    "count_dtime": 133,
+    "country": "SK"
+  },
+  {
+    "count_dtime": 132,
+    "country": "RS"
+  },
+  {
+    "count_dtime": 130,
+    "country": "BE"
+  },
+  {
+    "count_dtime": 128,
+    "country": "None"
+  },
+  {
+    "count_dtime": 128,
+    "country": "PH"
+  },
+  {
+    "count_dtime": 122,
+    "country": "AU"
+  },
+  {
+    "count_dtime": 112,
+    "country": "ID"
+  },
+  {
+    "count_dtime": 112,
+    "country": "PT"
+  },
+  {
+    "count_dtime": 106,
+    "country": "LT"
+  },
+  {
+    "count_dtime": 101,
+    "country": "DK"
+  },
+  {
+    "count_dtime": 97,
+    "country": "MY"
+  },
+  {
+    "count_dtime": 96,
+    "country": "HR"
+  },
+  {
+    "count_dtime": 92,
+    "country": "NL"
+  },
+  {
+    "count_dtime": 90,
+    "country": "NO"
+  },
+  {
+    "count_dtime": 87,
+    "country": "TH"
+  },
+  {
+    "count_dtime": 85,
+    "country": "AT"
+  },
+  {
+    "count_dtime": 79,
+    "country": "GE"
+  },
+  {
+    "count_dtime": 71,
+    "country": "IN"
+  },
+  {
+    "count_dtime": 67,
+    "country": "MX"
+  },
+  {
+    "count_dtime": 58,
+    "country": "EG"
+  },
+  {
+    "count_dtime": 56,
+    "country": "LV"
+  },
+  {
+    "count_dtime": 56,
+    "country": "SI"
+  },
+  {
+    "count_dtime": 51,
+    "country": "VN"
+  },
+  {
+    "count_dtime": 47,
+    "country": "FI"
+  },
+  {
+    "count_dtime": 46,
+    "country": "BA"
+  },
+  {
+    "count_dtime": 42,
+    "country": "EE"
+  },
+  {
+    "count_dtime": 32,
+    "country": "ME"
+  },
+  {
+    "count_dtime": 31,
+    "country": "AL"
+  },
+  {
+    "count_dtime": 31,
+    "country": "MK"
+  },
+  {
+    "count_dtime": 31,
+    "country": "NZ"
+  },
+  {
+    "count_dtime": 30,
+    "country": "MN"
+  },
+  {
+    "count_dtime": 27,
+    "country": "DZ"
+  },
+  {
+    "count_dtime": 25,
+    "country": "PK"
+  },
+  {
+    "count_dtime": 24,
+    "country": "CH"
+  },
+  {
+    "count_dtime": 23,
+    "country": "CL"
+  },
+  {
+    "count_dtime": 23,
+    "country": "JP"
+  },
+  {
+    "count_dtime": 23,
+    "country": "TN"
+  },
+  {
+    "count_dtime": 22,
+    "country": "TW"
+  },
+  {
+    "count_dtime": 21,
+    "country": "CO"
+  },
+  {
+    "count_dtime": 21,
+    "country": "MA"
+  },
+  {
+    "count_dtime": 20,
+    "country": "IE"
+  },
+  {
+    "count_dtime": 20,
+    "country": "IL"
+  },
+  {
+    "count_dtime": 19,
+    "country": "AM"
+  },
+  {
+    "count_dtime": 19,
+    "country": "KZ"
+  },
+  {
+    "count_dtime": 16,
+    "country": "BY"
+  },
+  {
+    "count_dtime": 15,
+    "country": "HK"
+  },
+  {
+    "count_dtime": 15,
+    "country": "PE"
+  },
+  {
+    "count_dtime": 12,
+    "country": "IQ"
+  },
+  {
+    "count_dtime": 11,
+    "country": "PR"
+  },
+  {
+    "count_dtime": 10,
+    "country": "CY"
+  },
+  {
+    "count_dtime": 10,
+    "country": "MD"
+  },
+  {
+    "count_dtime": 10,
+    "country": "VE"
+  },
+  {
+    "count_dtime": 9,
+    "country": "EC"
+  },
+  {
+    "count_dtime": 9,
+    "country": "JO"
+  },
+  {
+    "count_dtime": 9,
+    "country": "MT"
+  },
+  {
+    "count_dtime": 9,
+    "country": "ZA"
+  },
+  {
+    "count_dtime": 8,
+    "country": "AZ"
+  },
+  {
+    "count_dtime": 8,
+    "country": "CR"
+  },
+  {
+    "count_dtime": 8,
+    "country": "SA"
+  },
+  {
+    "count_dtime": 8,
+    "country": "UY"
+  },
+  {
+    "count_dtime": 7,
+    "country": "LB"
+  },
+  {
+    "count_dtime": 7,
+    "country": "MM"
+  },
+  {
+    "count_dtime": 6,
+    "country": "LY"
+  },
+  {
+    "count_dtime": 6,
+    "country": "SG"
+  },
+  {
+    "count_dtime": 5,
+    "country": "AE"
+  },
+  {
+    "count_dtime": 4,
+    "country": "AP"
+  },
+  {
+    "count_dtime": 4,
+    "country": "BO"
+  },
+  {
+    "count_dtime": 4,
+    "country": "DO"
+  },
+  {
+    "count_dtime": 4,
+    "country": "GT"
+  },
+  {
+    "count_dtime": 4,
+    "country": "IS"
+  },
+  {
+    "count_dtime": 4,
+    "country": "PS"
+  },
+  {
+    "count_dtime": 4,
+    "country": "PY"
+  },
+  {
+    "count_dtime": 4,
+    "country": "SY"
+  },
+  {
+    "count_dtime": 4,
+    "country": "YE"
+  },
+  {
+    "count_dtime": 3,
+    "country": "BD"
+  },
+  {
+    "count_dtime": 3,
+    "country": "EU"
+  },
+  {
+    "count_dtime": 3,
+    "country": "FO"
+  },
+  {
+    "count_dtime": 3,
+    "country": "HN"
+  },
+  {
+    "count_dtime": 3,
+    "country": "IM"
+  },
+  {
+    "count_dtime": 3,
+    "country": "IR"
+  },
+  {
+    "count_dtime": 3,
+    "country": "LU"
+  },
+  {
+    "count_dtime": 3,
+    "country": "NA"
+  },
+  {
+    "count_dtime": 3,
+    "country": "OM"
+  },
+  {
+    "count_dtime": 3,
+    "country": "QA"
+  },
+  {
+    "count_dtime": 2,
+    "country": "CM"
+  },
+  {
+    "count_dtime": 2,
+    "country": "DJ"
+  },
+  {
+    "count_dtime": 2,
+    "country": "GG"
+  },
+  {
+    "count_dtime": 2,
+    "country": "GH"
+  },
+  {
+    "count_dtime": 2,
+    "country": "KH"
+  },
+  {
+    "count_dtime": 2,
+    "country": "KW"
+  },
+  {
+    "count_dtime": 2,
+    "country": "LA"
+  },
+  {
+    "count_dtime": 2,
+    "country": "LK"
+  },
+  {
+    "count_dtime": 2,
+    "country": "MO"
+  },
+  {
+    "count_dtime": 2,
+    "country": "MU"
+  },
+  {
+    "count_dtime": 2,
+    "country": "MZ"
+  },
+  {
+    "count_dtime": 2,
+    "country": "NC"
+  },
+  {
+    "count_dtime": 2,
+    "country": "NI"
+  },
+  {
+    "count_dtime": 2,
+    "country": "NP"
+  },
+  {
+    "count_dtime": 2,
+    "country": "SV"
+  },
+  {
+    "count_dtime": 2,
+    "country": "TT"
+  },
+  {
+    "count_dtime": 2,
+    "country": "VG"
+  },
+  {
+    "count_dtime": 2,
+    "country": "ZW"
+  },
+  {
+    "count_dtime": 1,
+    "country": "A2"
+  },
+  {
+    "count_dtime": 1,
+    "country": "AD"
+  },
+  {
+    "count_dtime": 1,
+    "country": "AO"
+  },
+  {
+    "count_dtime": 1,
+    "country": "BF"
+  },
+  {
+    "count_dtime": 1,
+    "country": "BN"
+  },
+  {
+    "count_dtime": 1,
+    "country": "BS"
+  },
+  {
+    "count_dtime": 1,
+    "country": "BW"
+  },
+  {
+    "count_dtime": 1,
+    "country": "BZ"
+  },
+  {
+    "count_dtime": 1,
+    "country": "CI"
+  },
+  {
+    "count_dtime": 1,
+    "country": "FM"
+  },
+  {
+    "count_dtime": 1,
+    "country": "GF"
+  },
+  {
+    "count_dtime": 1,
+    "country": "GL"
+  },
+  {
+    "count_dtime": 1,
+    "country": "HT"
+  },
+  {
+    "count_dtime": 1,
+    "country": "JE"
+  },
+  {
+    "count_dtime": 1,
+    "country": "KE"
+  },
+  {
+    "count_dtime": 1,
+    "country": "MG"
+  },
+  {
+    "count_dtime": 1,
+    "country": "NG"
+  },
+  {
+    "count_dtime": 1,
+    "country": "PA"
+  },
+  {
+    "count_dtime": 1,
+    "country": "PF"
+  },
+  {
+    "count_dtime": 1,
+    "country": "PM"
+  },
+  {
+    "count_dtime": 1,
+    "country": "SD"
+  },
+  {
+    "count_dtime": 1,
+    "country": "SN"
+  },
+  {
+    "count_dtime": 1,
+    "country": "SR"
+  },
+  {
+    "count_dtime": 0,
+    "country": "AF"
+  },
+  {
+    "count_dtime": 0,
+    "country": "CG"
+  },
+  {
+    "count_dtime": 0,
+    "country": "GA"
+  },
+  {
+    "count_dtime": 0,
+    "country": "TG"
+  }
+]
