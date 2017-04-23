@@ -1,5 +1,6 @@
+/* @flow */
 import { COUNTRY_EDIT } from "../constants/Countries";
-import { CountryEditAction, Country } from "types/Countries";
+import { Country, CountryEditAction } from "types/Countries";
 import countryCode from "data/country_code";
 import mapData from "data/data";
 
@@ -13,12 +14,13 @@ const initialState = (): Array<Country> => Object.keys(countryCode).map(iso2 => 
     }
 });
 
-export type Action = CountryEditAction;
-
-export default (state: Array<Country> = initialState(), action: Action) => {
+export default (state: Array<Country> = initialState(), action: CountryEditAction) => {
     switch (action.type) {
         case COUNTRY_EDIT:
+            const country: Country = action.payload;
+            const index = state.findIndex(({ id }) => id === country.id);
 
+            state[index] = country;
 
             return [...state];
         default:

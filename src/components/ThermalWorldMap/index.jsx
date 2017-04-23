@@ -1,10 +1,11 @@
+/* @flow */
 import React, { Component } from "react";
-import * as PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Card, CardHeader, CardText, RaisedButton, TextField } from "material-ui";
 import { GeoJSON, Map } from "react-leaflet";
 import chroma from "chroma-js";
+import type { FeatureGroup } from "leaflet";
 
 import * as countriesActions from "actions/CountriesActions";
 import { Country } from "types/Countries";
@@ -14,47 +15,61 @@ import geoData from "data/countries.geo.json";
 import "leaflet/dist/leaflet.css";
 import "./styles.scss";
 
+type Props = {
+    +countries: Array<Country>,
+    +actions: {
+        countryEdit: (country: Country) => void
+    }
+};
+
+type State = {
+    showInfo: boolean,
+    enableEdit: boolean,
+
+    selectedCountry: Country,
+
+    nameError: ?string,
+    valueError: ?string
+}
+
+// $FlowFixMe
 @connect(({ countries }) => ({
     countries
 }), dispatch => ({
     actions: bindActionCreators(countriesActions, dispatch)
 }))
-class ThermalWorldMap extends Component {
+class ThermalWorldMap extends Component<void, Props, State> {
 
-    static propTypes = {
-        countries: PropTypes.arrayOf(PropTypes.shape(Country)),
-        actions: PropTypes.shape({
-            countryEdit: PropTypes.func
-        })
-    };
+    props: Props;
+    state: State;
 
     refs: {
         geoMap: GeoJSON
     };
 
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
 
         this.state = {
             showInfo: false,
             enableEdit: false,
 
-            selectedCountry: null
+            selectedCountry: null,
+
+            nameError: null,
+            valueError: null
         };
 
         this.handleInput = handleInput.bind(this);
-        this.showInfo = this.showInfo.bind(this);
-        this.clickMap = this.clickMap.bind(this);
-        this.toggleEdit = this.toggleEdit.bind(this);
-        this.eachFeature = this.eachFeature.bind(this);
-        this.colorScale = this.colorScale.bind(this);
-        this.saveCountry = this.saveCountry.bind(this);
-        this.updateLayers = this.updateLayers.bind(this);
     }
 
-    handleInput: (event: Event) => void;
+    componentWillReceiveProps() {
+        this.updateLayers();
+    }
 
-    colorScale(value): string {
+    handleInput: (event: SyntheticInputEvent) => void;
+
+    colorScale = (value: number): string => {
         const values = this.props.countries.map(item => item.value);
         const minValue = Math.min(...values);
         const maxValue = Math.max(...values);
@@ -62,29 +77,31 @@ class ThermalWorldMap extends Component {
         return chroma.scale(['#ffd900', '#ff1b00']).domain([minValue, maxValue])(value).hex();
     };
 
-    showInfo(country) {
+    showInfo = (country: Country): void => {
         this.setState({
             showInfo: true,
             enableEdit: false,
-            selectedCountry: country
+            selectedCountry: { ...country },
+            nameError: null,
+            valueError: null,
         }, this.updateLayers);
-    }
+    };
 
-    clickMap(event) {
-        if (event.originalEvent.target.nodeName === "DIV") {
+    clickMap = ({ originalEvent: { target } }: { originalEvent: { target: HTMLInputElement } }) => {
+        if (target.tagName === "DIV") {
             this.setState({
                 showInfo: false,
                 enableEdit: false,
                 selectedCountry: null
             }, this.updateLayers);
         }
-    }
+    };
 
-    toggleEdit() {
+    toggleEdit = () => {
         this.setState({ enableEdit: !this.state.enableEdit });
-    }
+    };
 
-    enterLayer(layer, { target: { feature: { properties: { iso_a2 } } } }) {
+    enterLayer = (layer: FeatureGroup, { target: { feature: { properties: { iso_a2 } } } }: any) => {
         const { selectedCountry } = this.state;
 
         if (!selectedCountry || selectedCountry.id !== iso_a2) {
@@ -94,9 +111,9 @@ class ThermalWorldMap extends Component {
                 opacity: 1
             });
         }
-    }
+    };
 
-    leaveLayer(layer, { target: { feature: { properties: { iso_a2 } } } }) {
+    leaveLayer(layer: FeatureGroup, { target: { feature: { properties: { iso_a2 } } } }: any) {
         const { selectedCountry } = this.state;
 
         if (!selectedCountry || selectedCountry.id !== iso_a2) {
@@ -108,17 +125,15 @@ class ThermalWorldMap extends Component {
         }
     }
 
-    findByFeature(iso_a2) {
+    findByFeature = (iso_a2: string): Country => {
         return this.props.countries.find(item => item.id === iso_a2);
-    }
+    };
 
-    updateLayers() {
-        this.refs.geoMap.leafletElement.eachLayer((layer) => {
-            this.eachFeature(layer.feature, layer);
-        });
-    }
+    updateLayers = () => this.refs.geoMap.leafletElement.eachLayer((layer) => {
+        this.eachFeature(layer.feature, layer);
+    });
 
-    eachFeature({ properties: { iso_a2 } }, layer) {
+    eachFeature = ({ properties: { iso_a2 } }: any, layer: FeatureGroup) => {
         const { selectedCountry } = this.state;
         const item = this.findByFeature(iso_a2);
 
@@ -150,21 +165,50 @@ class ThermalWorldMap extends Component {
                 "mouseout": this.leaveLayer.bind(this, layer)
             });
         }
-    }
+    };
 
-    saveCountry() {
+    saveCountry = () => {
         const { selectedCountry } = this.state;
         const { actions } = this.props;
 
-        this.setState({
-            enableEdit: false
-        }, () => actions.countryEdit(selectedCountry));
+        const errors: {
+            nameError: ?string,
+            valueError: ?string
+        } = {
+            nameError: null,
+            valueError: null
+        };
 
-        this.updateLayers();
-    }
+        let success = true;
+
+        if (selectedCountry.name === "") {
+            success = false;
+            errors.nameError = "Required";
+        }
+
+        if (isNaN(selectedCountry.value)) {
+            success = false;
+            errors.valueError = "Required";
+        } else {
+            selectedCountry.value = Number(selectedCountry.value);
+        }
+
+        this.setState({
+            enableEdit: !success,
+            ...errors
+        }, () => {
+            if (success) actions.countryEdit(selectedCountry)
+        });
+    };
 
     render() {
-        const { showInfo, enableEdit, selectedCountry } = this.state;
+        const {
+            showInfo, enableEdit,
+
+            selectedCountry,
+
+            nameError, valueError
+        } = this.state;
 
         return (
             <div className="thermal-world-map">
@@ -187,12 +231,12 @@ class ThermalWorldMap extends Component {
 
                     <CardText expandable>
                         <TextField className="thermal-world-map-info-text-field" hintText="Country"
-                                   name="selectedCountry.name" value={selectedCountry.name}
-                                   onChange={this.handleInput}/>
+                                   name="selectedCountry.name" defaultValue={selectedCountry.name}
+                                   onChange={this.handleInput} errorText={nameError}/>
 
                         <TextField className="thermal-world-map-info-text-field" hintText="Value"
-                                   type="number" name="selectedCountry.value" value={selectedCountry.value}
-                                   onChange={this.handleInput}/>
+                                   type="number" name="selectedCountry.value" defaultValue={selectedCountry.value}
+                                   onChange={this.handleInput} errorText={valueError}/>
 
                         <RaisedButton className="thermal-world-map-info-text-submit" label="Save"
                                       secondary={true} onTouchTap={this.saveCountry}/>

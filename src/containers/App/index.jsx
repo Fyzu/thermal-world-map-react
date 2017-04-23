@@ -1,3 +1,4 @@
+/* @flow */
 import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 import { AppBar } from "material-ui";

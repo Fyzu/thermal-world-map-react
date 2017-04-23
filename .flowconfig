@@ -1,6 +1,11 @@
 [ignore]
 .*/styled-components/src/.*
+.*/react-event-listener/src/.*
+.*/react-leaflet/src/.*
 .*/fbjs/.*
+fbjs/.*
+.*/node_modules/.*[^e]\.json$
+.*/node_modules/.*\(lib\|test\).*\.json$
 
 [libs]
 flow-typed
@@ -11,6 +16,17 @@ esproposal.class_instance_fields=enable
 
 module.name_mapper.extension='scss' -> 'empty/object'
 module.name_mapper.extension='json' -> 'empty/object'
+
+module.name_mapper='^actions\(\/?.*\)$' -> '<PROJECT_ROOT>/src/actions/\1'
+module.name_mapper='^components\(\/?.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^constants\(\/?.*\)$' -> '<PROJECT_ROOT>/src/constants/\1'
+module.name_mapper='^containers\(\/?.*\)$' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^data\(\/?.*\)$' -> '<PROJECT_ROOT>/src/data/\1'
+module.name_mapper='^images\(\/?.*\)$' -> '<PROJECT_ROOT>/src/images/\1'
+module.name_mapper='^reducers\(\/?.*\)$' -> '<PROJECT_ROOT>/src/reducers/\1'
+module.name_mapper='^store\(\/?.*\)$' -> '<PROJECT_ROOT>/src/store/\1'
+module.name_mapper='^types\(\/?.*\)$' -> '<PROJECT_ROOT>/src/types/\1'
+module.name_mapper='^utils\(\/?.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
 
 suppress_type=$FlowIssue
 suppress_type=$FlowFixMe
