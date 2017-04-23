@@ -9,11 +9,13 @@ import { configureStore } from "./store/index";
 import App from "containers/App";
 import ThermalWorldMap from "components/ThermalWorldMap";
 
+import "styles.scss";
+
 export let store: Store = configureStore();
 
 injectTapEventPlugin();
 
-render((
+window.onload = () => render((
     <Provider store={store}>
         <MuiThemeProvider>
             <App>

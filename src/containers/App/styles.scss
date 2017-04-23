@@ -1,10 +1,8 @@
 $medium-and-down: "only screen and (max-width : 768px)" !default;
 
-body {
-  margin: 0;
-}
-
 .app {
+  position: relative;
+  height: 100%;
 
   .app-bar {
     background-color: rgb(0, 69, 78) !important;
@@ -28,7 +26,7 @@ body {
     animation: app-logo-spin infinite 20s linear;
     height: 48px;
     width: 48px;
-    background: url(logo.svg) no-repeat;
+    background: url(../../images/logo.svg) no-repeat;
     background-size: 48px 48px;
     display: inline-block !important;
 
@@ -43,10 +41,10 @@ body {
   }
 
   .app-body {
-    height: calc(100vh - 64px - 50px);
+    height: calc(100% - 64px - 50px);
 
     @media #{$medium-and-down} {
-      height: 100vh;
+      height: 100%;
 
       .thermal-world-map {
 
@@ -79,8 +77,9 @@ body {
       bottom: 0;
       left: 0;
       right: 0;
-      opacity: 0.6;
       width: 100%;
+      margin: auto;
+      opacity: 0.6;
     }
 
     .app-footer-copyright {
