@@ -67,17 +67,16 @@ class ThermalWorldMap extends Component {
             showInfo: true,
             enableEdit: false,
             selectedCountry: country
-        });
+        }, this.updateLayers);
     }
 
     clickMap(event) {
-        console.log(event);
-
         if (event.originalEvent.target.nodeName === "DIV") {
             this.setState({
                 showInfo: false,
-                enableEdit: false
-            });
+                enableEdit: false,
+                selectedCountry: null
+            }, this.updateLayers);
         }
     }
 
@@ -85,24 +84,32 @@ class ThermalWorldMap extends Component {
         this.setState({ enableEdit: !this.state.enableEdit });
     }
 
-    enterLayer() {
-        this.bringToFront();
-        this.setStyle({
-            weight: 2,
-            opacity: 1
-        });
+    enterLayer(layer, { target: { feature: { properties: { iso_a2 } } } }) {
+        const { selectedCountry } = this.state;
+
+        if (!selectedCountry || selectedCountry.id !== iso_a2) {
+            layer.bringToFront();
+            layer.setStyle({
+                weight: 2,
+                opacity: 1
+            });
+        }
     }
 
-    leaveLayer() {
-        this.bringToBack();
-        this.setStyle({
-            weight: 1,
-            opacity: .5
-        });
+    leaveLayer(layer, { target: { feature: { properties: { iso_a2 } } } }) {
+        const { selectedCountry } = this.state;
+
+        if (!selectedCountry || selectedCountry.id !== iso_a2) {
+            layer.bringToBack();
+            layer.setStyle({
+                weight: 1,
+                opacity: .5
+            });
+        }
     }
 
-    findByFeature(properties) {
-        return this.props.countries.find(item => item.id === properties.iso_a2);
+    findByFeature(iso_a2) {
+        return this.props.countries.find(item => item.id === iso_a2);
     }
 
     updateLayers() {
@@ -111,22 +118,36 @@ class ThermalWorldMap extends Component {
         });
     }
 
-    eachFeature({ properties }, layer) {
-        const item = this.findByFeature(properties);
+    eachFeature({ properties: { iso_a2 } }, layer) {
+        const { selectedCountry } = this.state;
+        const item = this.findByFeature(iso_a2);
 
         if (item) {
-            layer.setStyle({
-                fillColor: this.colorScale(item.value),
-                fillOpacity: 1,
-                color: '#555',
-                weight: 1,
-                opacity: 0.5
-            });
+            if (selectedCountry && selectedCountry.id === item.id) {
+                layer.bringToFront();
+                layer.setStyle({
+                    fillColor: this.colorScale(item.value),
+                    fillOpacity: 1,
+                    color: "#0036ff",
+                    weight: 2,
+                    opacity: 1
+                });
+            } else {
+                layer.bringToBack();
+                layer.setStyle({
+                    fillColor: this.colorScale(item.value),
+                    fillOpacity: 1,
+                    color: "#555",
+                    weight: 1,
+                    opacity: 0.5
+                });
+            }
 
+            layer.off();
             layer.on({
                 "click": this.showInfo.bind(this, item),
-                "mouseover": this.enterLayer.bind(layer),
-                "mouseout": this.leaveLayer.bind(layer)
+                "mouseover": this.enterLayer.bind(this, layer),
+                "mouseout": this.leaveLayer.bind(this, layer)
             });
         }
     }
