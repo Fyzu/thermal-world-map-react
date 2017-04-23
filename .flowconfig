@@ -1,11 +1,16 @@
 [ignore]
 .*/styled-components/src/.*
+.*/fbjs/.*
 
 [libs]
 flow-typed
 
 [options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+
 module.name_mapper.extension='scss' -> 'empty/object'
+module.name_mapper.extension='json' -> 'empty/object'
 
 suppress_type=$FlowIssue
 suppress_type=$FlowFixMe

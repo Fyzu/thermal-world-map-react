@@ -1,0 +1,47 @@
+.thermal-world-map {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+
+  .thermal-world-map-container {
+    width: 100% !important;
+    height: 100% !important;
+
+    &.leaflet-container {
+
+      .leaflet-control-container {
+
+        .leaflet-top.leaflet-left {
+
+        }
+
+        .leaflet-bottom.leaflet-right {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  .thermal-world-map-info {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    background: rgba(0, 0, 0, .75);
+    color: white;
+    padding: .5em .75em;
+    font-size: .85em;
+
+    transform: translate(-50%);
+    z-index: 1000 !important;
+
+    .thermal-world-map-info-text-field {
+      display: block !important;
+      width: 100% !important;
+    }
+
+    .thermal-world-map-info-text-submit {
+      display: block !important;
+      width: 100% !important;
+    }
+  }
+}

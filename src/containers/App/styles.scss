@@ -1,0 +1,104 @@
+$medium-and-down: "only screen and (max-width : 768px)" !default;
+
+body {
+  margin: 0;
+}
+
+.app {
+
+  .app-bar {
+    background-color: rgb(0, 69, 78) !important;
+
+    @media #{$medium-and-down} {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 0.6;
+    }
+  }
+
+  .app-logo {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    animation: app-logo-spin infinite 20s linear;
+    height: 48px;
+    width: 48px;
+    background: url(logo.svg) no-repeat;
+    background-size: 48px 48px;
+    display: inline-block !important;
+
+    @keyframes app-logo-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .app-body {
+    height: calc(100vh - 64px - 50px);
+
+    @media #{$medium-and-down} {
+      height: 100vh;
+
+      .thermal-world-map {
+
+        .leaflet-control-container {
+
+          .leaflet-top.leaflet-left {
+            top: 64px;
+          }
+        }
+
+        .thermal-world-map-info {
+          bottom: 45px;
+          width: calc(100% - 30px) !important;
+        }
+      }
+    }
+  }
+
+  .app-footer {
+    font-family: Roboto, sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: .9rem;
+    z-index: 1000;
+
+    background-color: rgb(0, 69, 78) !important;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+
+    @media #{$medium-and-down} {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0.6;
+      width: 100%;
+    }
+
+    .app-footer-copyright {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 48px;
+      margin: 0 auto;
+      height: 50px;
+
+      font-weight: 300;
+      line-height: 1.5;
+
+      @media #{$medium-and-down} {
+        height: 30px;
+        padding: 0 24px;
+      }
+    }
+  }
+}
