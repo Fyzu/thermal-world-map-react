@@ -14,6 +14,7 @@ flow-typed
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
 
+module.name_mapper.extension='pcss' -> 'empty/object'
 module.name_mapper.extension='scss' -> 'empty/object'
 module.name_mapper.extension='json' -> 'empty/object'
 

@@ -1,6 +1,8 @@
 'use strict';
 
 var autoprefixer = require('autoprefixer');
+var precss = require('precss');
+
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -112,8 +114,7 @@ module.exports = {
                     // Webpack 2 fixes this, but for now we include this hack.
                     // https://github.com/facebookincubator/create-react-app/issues/1713
                     /\.(js|jsx)(\?.*)?$/,
-                    /\.css$/,
-                    /\.scss$/,
+                    /\.(css|pcss)$/,
                     /\.json$/,
                     /\.svg$/
                 ],
@@ -142,13 +143,8 @@ module.exports = {
             // In production, we use a plugin to extract that CSS to a file, but
             // in development "style" loader enables hot editing of CSS.
             {
-                test: /\.css$/,
+                test: /\.(css|pcss)$/,
                 loader: 'style!css?importLoaders=1!postcss'
-            },
-            // SASS loader
-            {
-                test: /\.scss$/,
-                loader: 'style!css?importLoaders=1!postcss!sass'
             },
             // JSON is not enabled by default in Webpack but both Node and Browserify
             // allow it implicitly so we also enable it.
@@ -172,6 +168,7 @@ module.exports = {
     // We use PostCSS for autoprefixing only.
     postcss: function () {
         return [
+            precss({}),
             autoprefixer({
                 browsers: [
                     '>1%',

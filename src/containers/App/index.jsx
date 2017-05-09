@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 import { AppBar } from "material-ui";
-import "./styles.scss";
+import "./styles.pcss";
 
 class App extends PureComponent {
 
@@ -15,8 +15,8 @@ class App extends PureComponent {
         return (
             <div className="app">
                 <AppBar className="app-bar"
-                        title="Thermal world map"
-                        iconClassNameLeft="app-logo"/>
+                    title="Thermal world map"
+                    iconClassNameLeft="app-logo" />
                 <div className="app-body">
                     {children}
                 </div>

@@ -1,6 +1,8 @@
 'use strict';
 
 var autoprefixer = require('autoprefixer');
+var precss = require('precss');
+
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -109,7 +111,7 @@ module.exports = {
                 exclude: [
                     /\.html$/,
                     /\.(js|jsx)$/,
-                    /\.css$/,
+                    /\.(css|pcss)$/,
                     /\.scss$/,
                     /\.json$/,
                     /\.svg$/
@@ -140,10 +142,10 @@ module.exports = {
             // use the "style" loader inside the async code so CSS from them won't be
             // in the main CSS file.
             {
-                test: /\.(css|scss$)$/,
+                test: /\.(css|pcss$)$/,
                 loader: ExtractTextPlugin.extract(
                     'style',
-                    'css?importLoaders=1!postcss!sass',
+                    'css?importLoaders=1!postcss',
                     extractTextPluginOptions
                 )
                 // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
@@ -170,6 +172,7 @@ module.exports = {
     // We use PostCSS for autoprefixing only.
     postcss: function () {
         return [
+            precss({}),
             autoprefixer({
                 browsers: [
                     '>1%',

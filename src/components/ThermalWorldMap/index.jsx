@@ -13,10 +13,10 @@ import { handleInput } from "utils/Input";
 import geoData from "data/countries.geo.json";
 
 import "leaflet/dist/leaflet.css";
-import "./styles.scss";
+import "./styles.pcss";
 
 type Props = {
-    +countries: Array<Country>,
+    +countries: Array <Country>,
     +actions: {
         countryEdit: (country: Country) => void
     }
@@ -175,9 +175,9 @@ class ThermalWorldMap extends Component<void, Props, State> {
             nameError: ?string,
             valueError: ?string
         } = {
-            nameError: null,
-            valueError: null
-        };
+                nameError: null,
+                valueError: null
+            };
 
         let success = true;
 
@@ -204,7 +204,7 @@ class ThermalWorldMap extends Component<void, Props, State> {
     render() {
         const {
             showInfo, enableEdit,
-
+            
             selectedCountry,
 
             nameError, valueError
@@ -213,35 +213,35 @@ class ThermalWorldMap extends Component<void, Props, State> {
         return (
             <div className="thermal-world-map">
                 <Map className="thermal-world-map-container" onClick={this.clickMap}
-                     center={[51.505, -0.09]} maxBounds={[[-240, -200], [240, 200]]}
-                     zoom={2} maxZoom={5} minZoom={1}>
+                    center={[51.505, -0.09]} maxBounds={[[-240, -200], [240, 200]]}
+                    zoom={2} maxZoom={5} minZoom={1}>
 
                     <GeoJSON ref="geoMap" data={geoData}
-                             color={"#555"} weight={1}
-                             fillColor={"#EBF5FF"} opacity={0.5}
-                             onEachFeature={this.eachFeature}/>
+                        color={"#555"} weight={1}
+                        fillColor={"#EBF5FF"} opacity={0.5}
+                        onEachFeature={this.eachFeature} />
                 </Map>
 
                 {showInfo && selectedCountry &&
-                <Card className="thermal-world-map-info" onExpandChange={this.toggleEdit} expanded={enableEdit}>
-                    <CardHeader
-                        title={selectedCountry.name}
-                        subtitle={`Value: ${selectedCountry.value}`}
-                        actAsExpander showExpandableButton/>
+                    <Card className="thermal-world-map-info" onExpandChange={this.toggleEdit} expanded={enableEdit}>
+                        <CardHeader
+                            title={selectedCountry.name}
+                            subtitle={`Value: ${selectedCountry.value}`}
+                            actAsExpander showExpandableButton />
 
-                    <CardText expandable>
-                        <TextField className="thermal-world-map-info-text-field" hintText="Country"
-                                   name="selectedCountry.name" defaultValue={selectedCountry.name}
-                                   onChange={this.handleInput} errorText={nameError}/>
+                        <CardText expandable>
+                            <TextField className="thermal-world-map-info-text-field" hintText="Country"
+                                name="selectedCountry.name" defaultValue={selectedCountry.name}
+                                onChange={this.handleInput} errorText={nameError} />
 
-                        <TextField className="thermal-world-map-info-text-field" hintText="Value"
-                                   type="number" name="selectedCountry.value" defaultValue={selectedCountry.value}
-                                   onChange={this.handleInput} errorText={valueError}/>
+                            <TextField className="thermal-world-map-info-text-field" hintText="Value"
+                                type="number" name="selectedCountry.value" defaultValue={selectedCountry.value}
+                                onChange={this.handleInput} errorText={valueError} />
 
-                        <RaisedButton className="thermal-world-map-info-text-submit" label="Save"
-                                      secondary={true} onTouchTap={this.saveCountry}/>
-                    </CardText>
-                </Card>
+                            <RaisedButton className="thermal-world-map-info-text-submit" label="Save"
+                                secondary={true} onTouchTap={this.saveCountry} />
+                        </CardText>
+                    </Card>
                 }
             </div>
         );

@@ -12,7 +12,7 @@ export const configureStore = (initialState: any): Store<*, *> => {
             thunk, createLogger()
         )
     );
-
+    
     if (module.hot) {
         // $FlowFixMe
         module.hot.accept("../reducers", () => {
